@@ -162,8 +162,27 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	public void inOrderStack() {
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
 		
+		if (root == null)
+		{
+			return;
+		}
+		BSTNode<T> curr = root;
+		while (curr != null || in.size()>0)
+		{
+			while (curr != null) {
+                in.push(curr);
+                curr = curr.leftChild;
+            }
+            curr = in.pop();
+ 
+            System.out.print(curr.data + " ");
+            curr = curr.rightChild;
+        }
+		}
 		
-	}
+		
+		
+		
 	
 	//Traverse the tree in an postorder fashion
 	//Recurse on the children and then print the value in the current node
